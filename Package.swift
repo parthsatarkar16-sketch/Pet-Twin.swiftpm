@@ -10,16 +10,17 @@ import AppleProductTypes
 let package = Package(
     name: "Pet Twin",
     platforms: [
-        .iOS("16.0")
+        .iOS("17.0")
     ],
     products: [
         .iOSApplication(
             name: "Pet Twin",
             targets: ["AppModule"],
             bundleIdentifier: "com.Parth.Pet-Twin",
+            teamIdentifier: "788P3925GD",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .sparkle),
+            appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.indigo),
             supportedDeviceFamilies: [
                 .pad,
@@ -36,7 +37,11 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            path: ".",
+            sources: ["Components", "Core", "HealthModule", "VaccinationModule"],
+            resources: [
+                .process("Assets.xcassets")
+            ]
         )
     ],
     swiftLanguageVersions: [.version("6")]
